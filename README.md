@@ -18,11 +18,10 @@ Typically, to build a native plugin(VST/AU/AAX,etc.), we need to not only code f
 
 ## Targetted Features
 
-1. **Parameters and Events:** Setters/Getters/onMIDI/onAudio/etc. should be explicit to developers.
-2. **Graphical User Interface:** For the GUI part, there should be some generic GUI components, ideally, sliders, knobs, switch buttons, select menus, etc. Also, there should be some ways for making custom GUI components.
-3. **Audio Libraries:** Besides built-in web audio nodes, there're some emscripten-compiled audio libraries, like faust/csound/JUCE, porting in audioworklet. It's good to put them directly into the library and get everything set up so that audio developers can directly use them. 
-4. **Presets:** Developers should be able to making presets, e.g. storing the predefined parameters and their corresponding names into the preset library.
-
+1. **Graphical User Interface:** For the GUI part, there should be some generic GUI components, ideally, sliders, knobs, switch buttons, select menus, etc. Also, there should be some ways for making custom GUI components.
+2. **Audio Libraries:** Besides built-in web audio nodes, there're some emscripten-compiled audio libraries, like faust/csound/JUCE, porting in audioworklet. It's good to put them directly into the library and get everything set up so that audio developers can directly use them. 
+3. **Presets:** Developers should be able to making presets, e.g. storing the predefined parameters and their corresponding names into the preset library.
+4. **Parameters and Events:** Setters/Getters/onMIDI/onAudio/etc. should be explicit to developers.
 
 ## Some Questions
 Since this project is still on its extremely early stage, there are some questions that are brought out:
