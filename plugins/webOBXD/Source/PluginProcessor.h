@@ -2,7 +2,7 @@
 	==============================================================================
 	This file is part of Obxd synthesizer.
 
-	Copyright © 2013-2014 Filatov Vadim
+	Copyright ï¿½ 2013-2014 Filatov Vadim
 	
 	Contact author via email :
 	justdat_@_e1.ru
@@ -47,7 +47,7 @@ public:
     void processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages);
 
     //==============================================================================
-    AudioProcessorEditor* createEditor();
+    AudioProcessorEditor* createEditor() override;
     bool hasEditor() const;
 	
 	int lastMovedController,lastUsedParameter;

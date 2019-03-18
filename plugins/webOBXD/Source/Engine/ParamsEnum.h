@@ -2,7 +2,7 @@
 	==============================================================================
 	This file is part of Obxd synthesizer.
 
-	Copyright © 2013-2014 Filatov Vadim
+	Copyright ï¿½ 2013-2014 Filatov Vadim
 	
 	Contact author via email :
 	justdat_@_e1.ru
@@ -25,9 +25,7 @@
 #include "ObxdVoice.h"
 enum ObxdParameters
 {
-	UNDEFINED,
-	MIDILEARN,
-	VOLUME,
+	VOLUME = 0,
 	VOICE_COUNT,
 	TUNE,
 	OCTAVE,
@@ -80,6 +78,7 @@ enum ObxdParameters
 	FREL,
 	ENVDER,FILTERDER,PORTADER,
 	PAN1,PAN2,PAN3,PAN4,PAN5,PAN6,PAN7,PAN8,
+    MIDILEARN,
 	UNLEARN,
 	ECONOMY_MODE,
 	LFO_SYNC,
@@ -90,5 +89,5 @@ enum ObxdParameters
 	PW_OSC2_OFS,
 	LEVEL_DIF,
 	SELF_OSC_PUSH,
-	PARAM_COUNT,
+	PARAM_COUNT
 };

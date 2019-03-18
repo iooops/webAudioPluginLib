@@ -13,6 +13,16 @@ EMSCRIPTEN_KEEPALIVE const char* Processor::init(uint32_t bufsize, uint32_t sr, 
 	return 0;	// custom descriptor not defined at DSP side
 }
 
+uint32_t Processor::getUiDescSize()
+{
+    return uiInfoSize_;
+}
+
+char* Processor::getUiDesc()
+{
+    return uiInfo_;
+}
+
 // JavaScript glue
 extern "C"
 {
@@ -26,6 +36,8 @@ extern "C"
 	EMSCRIPTEN_KEEPALIVE void wam_onpatch(Processor* proc, void* data, uint32_t size) { proc->onPatch(data, size); }
 	EMSCRIPTEN_KEEPALIVE void wam_onmessageN(Processor* proc, char* verb, char* res, double data) { proc->onMessage(verb, res, data); }
 	EMSCRIPTEN_KEEPALIVE void wam_onmessageS(Processor* proc, char* verb, char* res, char* data) { proc->onMessage(verb, res, data); }
+    EMSCRIPTEN_KEEPALIVE uint32_t wam_getuidescsize(Processor* proc) { return proc->getUiDescSize(); }
+    EMSCRIPTEN_KEEPALIVE char* wam_getuidesc(Processor* proc) { return proc->getUiDesc(); }
 }
 
 // for debugging
