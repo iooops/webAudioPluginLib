@@ -1,0 +1,16 @@
+{
+  "name": "myEditor",
+  "version": "1.0.0",
+  "description": "myEditor",
+  "main": "webServer.js",
+  "scripts": {
+    "test": "echo Test your code by opening http://localhost:3000 in your browser.",
+    "jshint": "./node_modules/.bin/jshint --config .jshintrc --exclude=node_modules . || exit 0"
+  },
+  "author": "Xingxing Yang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "jshint": "^2.9.4"
+  }
+}
