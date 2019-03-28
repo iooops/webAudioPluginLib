@@ -180,6 +180,7 @@ Jari Kleimola 2017-18 (jari@webaudiomodules.org) -->
     _oncontrol (e) {
 			var ikey = this.map.indexOf(e.detail.id);
       this._plug.setParam(ikey, e.detail.value);
+      console.log(e.detail.value);
     }
   }
 

@@ -11,6 +11,14 @@ There're currently several projects going on for making web audio plugins.
 
 Basically, the concept of web audio plugins is to make a dynamic web page/API for the hosts to use. Typically, they can run standalone, or they can also be hosted in a web DAW.
 
+## Existing libraries that we can use
+- Javascript:
+  - Tonejs: https://github.com/Tonejs
+  
+- Emscripten:
+  - Faust
+  - Csound
+  - JUCE
 
 ## Intro: Why do we need a web audio plugin library
 
