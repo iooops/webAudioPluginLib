@@ -88,6 +88,8 @@ public:
         singlePrecision,
         doublePrecision
     };
+    
+    char * getUIInfo(uint32_t &size);
 
     //==============================================================================
     /** Destructor. */
@@ -1174,12 +1176,21 @@ public:
     */
     void updateHostDisplay();
 
+    enum UIType
+    {
+        UIT_SLIDER_LINEAR = 0,
+        UIT_SLIDER_LOG,
+        UIT_STATE_BUTTON,
+        UIT_RADIO_BUTTON,
+        UIT_COMBOBOX,
+        UIT_DEFAULT
+    };
     //==============================================================================
     /** Adds a parameter to the list.
         The parameter object will be managed and deleted automatically by the list
         when no longer needed.
     */
-    void addParameter (AudioProcessorParameter*);
+    void addParameter (AudioProcessorParameter*, UIType type = UIT_DEFAULT);
 
     /** Returns the current list of parameters. */
     const OwnedArray<AudioProcessorParameter>& getParameters() const noexcept;
@@ -1519,8 +1530,17 @@ protected:
 
     /** @internal */
     void sendParamChangeMessageToListeners (int parameterIndex, float newValue);
-
+    
+    enum ParamType
+    {
+        PT_FLOAT = 0,
+        PT_INT,
+        PT_BOOL,
+        PT_CHOICE
+    };
 private:
+    String uiInfoStr_;
+    std::vector<UIType> uiTypes_;
     //==============================================================================
     struct InOutChannelPair
     {

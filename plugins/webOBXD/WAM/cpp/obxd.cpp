@@ -24,6 +24,7 @@ const char* OBXD::init(uint32_t bufsize, uint32_t sr, void* desc)
 	m_audiobufs = new AudioSampleBuffer(m_icount + m_ocount, bufsize);
 	m_midibuf = new MidiBuffer();
 	m_proc->prepareToPlay(sr, bufsize);
+    uiInfo_ = m_proc->getUIInfo(uiInfoSize_);
 
 	// -- our descriptor resides at JS side, so we don't return anything here
 	return nullptr;

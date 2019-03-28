@@ -36,6 +36,8 @@ public:
 	virtual void onMessage(char* verb, char* res, double data) {}
 	virtual void onMessage(char* verb, char* res, char* data) {}
 	virtual void onParam(uint32_t idparam, double value) {}	// todo: other datatypes
+    uint32_t getUiDescSize();
+    char* getUiDesc();
 	
 // -- patches
 public:
@@ -50,6 +52,8 @@ protected:
 	uint32_t m_sr;
 	int m_inChannels;
 	int m_outChannels;
+    char* uiInfo_;
+    uint32_t uiInfoSize_;
 };
 
 // for debugging

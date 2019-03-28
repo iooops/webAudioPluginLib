@@ -23,7 +23,7 @@
 
   ==============================================================================
 */
-
+#include <typeinfo>
 namespace juce
 {
 
@@ -691,11 +691,12 @@ AudioProcessorParameter* AudioProcessor::getParamChecked (int index) const noexc
     return p;
 }
 
-void AudioProcessor::addParameter (AudioProcessorParameter* p)
+void AudioProcessor::addParameter (AudioProcessorParameter* p, UIType type/* = UIT_DEFAULT*/)
 {
     p->processor = this;
     p->parameterIndex = managedParameters.size();
     managedParameters.add (p);
+    uiTypes_.push_back(type);
 
     // if you're using parameter objects, then you must not override the
     // deprecated getNumParameters() method!
@@ -1370,6 +1371,63 @@ int32 AudioProcessor::getAAXPluginIDForMainBusConfig (const AudioChannelSet& mai
     }
 
     return (idForAudioSuite ? 0x6a796161 /* 'jyaa' */ : 0x6a636161 /* 'jcaa' */) + uniqueFormatId;
+}
+    
+char * AudioProcessor::getUIInfo(uint32_t &size)
+{
+    if (uiInfoStr_.isEmpty())
+    {
+        DynamicObject* obj = new DynamicObject();
+        obj->setProperty("paramNumber", managedParameters.size());
+        uiInfoStr_ = JSON::toString(var(obj));
+        for (int i = 0; i < managedParameters.size(); i++)
+        {
+            DynamicObject* uiObj = new DynamicObject();
+            uiObj->setProperty("paramIndex", i);
+            uiObj->setProperty("paramName", managedParameters.getUnchecked(i)->getName(100));
+            uiObj->setProperty("paramUnit", managedParameters.getUnchecked(i)->getLabel());
+            const std::type_info& paramTypeId = typeid(managedParameters.getUnchecked(i));
+            if (paramTypeId == typeid(AudioParameterBool))
+            {
+                uiObj->setProperty("ParamType", int(PT_BOOL));
+                uiObj->setProperty("minValue", 0);
+                uiObj->setProperty("maxValue", 1);
+            }
+            else if (paramTypeId == typeid(AudioParameterInt))
+            {
+                uiObj->setProperty("ParamType", int(PT_INT));
+                AudioParameterInt* p = dynamic_cast<AudioParameterInt*>(managedParameters.getUnchecked(i));
+                uiObj->setProperty("minValue", p->getRange().getStart());
+                uiObj->setProperty("maxValue", p->getRange().getEnd());
+            }
+            else if (paramTypeId == typeid(AudioParameterFloat))
+            {
+                AudioParameterFloat* p = dynamic_cast<AudioParameterFloat*>(managedParameters.getUnchecked(i));
+                uiObj->setProperty("ParamType", int(PT_FLOAT));
+                uiObj->setProperty("minValue", p->range.start);
+                uiObj->setProperty("maxValue", p->range.end);
+            }
+            else if (paramTypeId == typeid(AudioParameterChoice))
+            {
+                uiObj->setProperty("ParamType", int(PT_CHOICE));
+                DynamicObject* choiceObj = new DynamicObject();
+                AudioParameterChoice* pc = dynamic_cast<AudioParameterChoice*>(managedParameters.getUnchecked(i));
+                for (int j = 0; j < pc->choices.size(); j++)
+                    choiceObj->setProperty(String(i), pc->choices[j]);
+                uiObj->setProperty("Choices", choiceObj);
+                uiObj->setProperty("minValue", 0);
+                uiObj->setProperty("maxValue", pc->choices.size() - 1);
+            }
+
+            uiObj->setProperty("defaultValue", managedParameters.getUnchecked(i)->getDefaultValue());
+            uiObj->setProperty("steps", managedParameters.getUnchecked(i)->getNumSteps());
+            uiObj->setProperty("uiType", uiTypes_.at(i));
+            uiInfoStr_.append(JSON::toString(var(uiObj)), 65536);
+        }
+    }
+    
+    size = uiInfoStr_.length();
+    return (char *)uiInfoStr_.getCharPointer().getAddress();
 }
 
 
