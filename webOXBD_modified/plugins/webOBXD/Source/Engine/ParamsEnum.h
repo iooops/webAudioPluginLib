@@ -25,7 +25,9 @@
 #include "ObxdVoice.h"
 enum ObxdParameters
 {
-	VOLUME = 0,
+    UNDEFINED = 0,
+    MIDILEARN,
+	VOLUME,
 	VOICE_COUNT,
 	TUNE,
 	OCTAVE,
@@ -78,7 +80,6 @@ enum ObxdParameters
 	FREL,
 	ENVDER,FILTERDER,PORTADER,
 	PAN1,PAN2,PAN3,PAN4,PAN5,PAN6,PAN7,PAN8,
-    MIDILEARN,
 	UNLEARN,
 	ECONOMY_MODE,
 	LFO_SYNC,

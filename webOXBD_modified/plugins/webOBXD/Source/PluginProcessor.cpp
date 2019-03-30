@@ -43,6 +43,8 @@ void ObxdAudioProcessor::initAllParams()
 	for(int i = 0 ; i < PARAM_COUNT;i++)
 		setParameter(i,programs.currentProgramPtr->values[i]);
     
+    addParameter(new AudioParameterFloat(String(UNDEFINED), getParameterName(UNDEFINED), 0, 1.0, programs.currentProgramPtr->values[UNDEFINED]));
+    addParameter(new AudioParameterBool(String(MIDILEARN), getParameterName(MIDILEARN), programs.currentProgramPtr->values[MIDILEARN] > 0.5f));
     addParameter(new AudioParameterFloat(String(VOLUME), getParameterName(VOLUME), 0, 1.0, programs.currentProgramPtr->values[VOLUME]));
     addParameter(new AudioParameterFloat(String(VOICE_COUNT), getParameterName(VOICE_COUNT), 0, 1.0, programs.currentProgramPtr->values[VOICE_COUNT]));
     addParameter(new AudioParameterFloat(String(TUNE), getParameterName(TUNE), 0, 1.0, programs.currentProgramPtr->values[TUNE]));
@@ -111,7 +113,6 @@ void ObxdAudioProcessor::initAllParams()
     addParameter(new AudioParameterFloat(String(PAN6), getParameterName(PAN6), 0, 1.0, programs.currentProgramPtr->values[PAN6]));
     addParameter(new AudioParameterFloat(String(PAN7), getParameterName(PAN7), 0, 1.0, programs.currentProgramPtr->values[PAN7]));
     addParameter(new AudioParameterFloat(String(PAN8), getParameterName(PAN8), 0, 1.0, programs.currentProgramPtr->values[PAN8]));
-    addParameter(new AudioParameterBool(String(MIDILEARN), getParameterName(MIDILEARN), programs.currentProgramPtr->values[MIDILEARN] > 0.5f));
     addParameter(new AudioParameterBool(String(UNLEARN), getParameterName(UNLEARN), programs.currentProgramPtr->values[UNLEARN] > 0.5f));
     addParameter(new AudioParameterBool(String(ECONOMY_MODE), getParameterName(ECONOMY_MODE), programs.currentProgramPtr->values[ECONOMY_MODE] > 0.5f));
     addParameter(new AudioParameterBool(String(LFO_SYNC), getParameterName(LFO_SYNC), programs.currentProgramPtr->values[LFO_SYNC] > 0.5f));
