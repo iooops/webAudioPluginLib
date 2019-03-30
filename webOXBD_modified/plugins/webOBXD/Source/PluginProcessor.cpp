@@ -116,12 +116,12 @@ void ObxdAudioProcessor::initAllParams()
     addParameter(new AudioParameterBool(String(UNLEARN), getParameterName(UNLEARN), programs.currentProgramPtr->values[UNLEARN] > 0.5f));
     addParameter(new AudioParameterBool(String(ECONOMY_MODE), getParameterName(ECONOMY_MODE), programs.currentProgramPtr->values[ECONOMY_MODE] > 0.5f));
     addParameter(new AudioParameterBool(String(LFO_SYNC), getParameterName(LFO_SYNC), programs.currentProgramPtr->values[LFO_SYNC] > 0.5f));
-    addParameter(new AudioParameterFloat(String(PW_ENV), getParameterName(PW_ENV), 0, 0.85, programs.currentProgramPtr->values[PW_ENV]));
-    addParameter(new AudioParameterFloat(String(PW_ENV_BOTH), getParameterName(PW_ENV_BOTH), 0, 0.85, programs.currentProgramPtr->values[PW_ENV_BOTH]));
+    addParameter(new AudioParameterFloat(String(PW_ENV), getParameterName(PW_ENV), 0, 1.0, programs.currentProgramPtr->values[PW_ENV]));
+    addParameter(new AudioParameterFloat(String(PW_ENV_BOTH), getParameterName(PW_ENV_BOTH), 0, 1.0, programs.currentProgramPtr->values[PW_ENV_BOTH]));
     addParameter(new AudioParameterBool(String(ENV_PITCH_BOTH), getParameterName(ENV_PITCH_BOTH), programs.currentProgramPtr->values[ENV_PITCH_BOTH] > 0.5f));
     addParameter(new AudioParameterBool(String(FENV_INVERT), getParameterName(FENV_INVERT), programs.currentProgramPtr->values[FENV_INVERT] > 0.5f));
-    addParameter(new AudioParameterFloat(String(PW_OSC2_OFS), getParameterName(PW_OSC2_OFS), 0, 0.75, programs.currentProgramPtr->values[PW_OSC2_OFS]));
-    addParameter(new AudioParameterFloat(String(LEVEL_DIF), getParameterName(LEVEL_DIF), 0, 0.67, programs.currentProgramPtr->values[LEVEL_DIF]));
+    addParameter(new AudioParameterFloat(String(PW_OSC2_OFS), getParameterName(PW_OSC2_OFS), 0, 1.0, programs.currentProgramPtr->values[PW_OSC2_OFS]));
+    addParameter(new AudioParameterFloat(String(LEVEL_DIF), getParameterName(LEVEL_DIF), 0, 1.0, programs.currentProgramPtr->values[LEVEL_DIF]));
     addParameter(new AudioParameterBool(String(SELF_OSC_PUSH), getParameterName(SELF_OSC_PUSH), programs.currentProgramPtr->values[SELF_OSC_PUSH] > 0.5f));
 }
 //==============================================================================
