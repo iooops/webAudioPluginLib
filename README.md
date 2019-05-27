@@ -1,6 +1,6 @@
 # Web Audio Plugin Library (First Draft Version)
 
-### Mission: Creating a web audio plugin library that can help make it easier to build web audio plugins for web DAW hosts.
+### Mission: Creating a web audio plugin library that can help make it easier for developers to build web audio plugins for web DAW hosts.
 
 ## Before we start
 There're currently several projects going on for making web audio plugins. 
