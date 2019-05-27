@@ -34,12 +34,12 @@ Typically, to build a native plugin(VST/AU/AAX,etc.), we need to not only code f
 ## Some Questions
 Since this project is still on its extremely early stage, there are some questions that are brought out:
 
-1. How to deliver the format? Should it be a template with a lot of code exposed, or should it be a web url to link to? Or something in between?
+1. How to deliver the format?
 2. How to load, instantiate, and connect audio plugins? (from [Web Audio Modules](https://github.com/webaudiomodules))
 3. How to make the GUI work correspondingly with parameteres? How to customize them?
 5. How to resolve the conflicts of using different libraries, if there's any?
 5. How to preserve the presets? JSON? javascript? How to handle preset change => params change?
-  A: WAM processor seems to lack an interface used to re-initiate the processor, when a preset is loaded, it can be more efficient to re-initiate the processor than changing each parameter one by one.
+  A: WAM processor seems to be lacking an interface used to re-initiate the processor, when a preset is loaded, it can be more efficient to re-initiate the processor than changing each parameter one by one.
 6. ......
 
 ## Ideal Features of GUI components
