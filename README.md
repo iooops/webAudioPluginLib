@@ -42,7 +42,7 @@ Since this project is still on its extremely early stage, there are some questio
   A: WAM processor seems to lack an interface used to re-initiate the processor, when a preset is loaded, it can be more efficient to re-initiate the processor than changing each parameter one by one.
 6. ......
 
-## Supported Features of GUI components
+## Ideal Features of GUI components
 1. Sliders' values can be changed logarithmically.
 2. Good to have complex components which can behave like text box and slider at the same time (optional).
 3. webGL component
